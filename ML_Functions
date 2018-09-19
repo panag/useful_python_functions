@@ -1,0 +1,7 @@
+#permutation importance
+import eli5
+from eli5.sklearn import PermutationImportance
+
+def Calculate_Permutation_Importance(model, random_state, data_X, data_y):
+    perm = PermutationImportance(model, random_state=random_state).fit(data_X, data_y)
+    return(eli5.show_weights(perm, feature_names = data_X.columns.tolist()))
